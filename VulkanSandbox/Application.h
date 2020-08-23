@@ -15,6 +15,8 @@ class Application
 {
 public:
     void run();
+
+    void framebufferResized();
 private:
     GLFWwindow* m_window = nullptr;
 
@@ -41,6 +43,11 @@ private:
 
     std::vector<VkFramebuffer> m_swapChainFramebuffers;
 
+    VkBuffer m_vertexBuffer;
+    VkDeviceMemory m_vertexBufferMemory;
+    VkBuffer m_indexBuffer;
+    VkDeviceMemory m_indexBufferMemory;
+	
     VkCommandPool m_commandPool;
     std::vector<VkCommandBuffer> m_commandBuffers;
 
@@ -49,6 +56,8 @@ private:
     std::vector<VkFence> m_inFlightFences;
     std::vector<VkFence> m_imagesInFlight;
     size_t m_currentFrame = 0;
+
+    bool m_framebufferResized = false;
 #ifdef NDEBUG
     static const bool m_enableValidationLayers = false;
 #else
@@ -87,6 +96,8 @@ private:
     void createLogicalDevice();
 
     void createSwapChain();
+    void cleanupSwapChain();
+    void recreateSwapChain();
 
     void createImageViews();
 
@@ -96,6 +107,11 @@ private:
 
     void createFramebuffers();
 
+    void createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties, VkBuffer& buffer, VkDeviceMemory& bufferMemory);
+    void copyBuffer(VkBuffer srcBuffer, VkBuffer dstBuffer, VkDeviceSize size);
+    void createVertexBuffer();
+    void createIndexBuffer();
+	
     void createCommandPool();
     void createCommandBuffers();
 
@@ -118,12 +134,13 @@ private:
     bool checkDeviceExtensionSupport(VkPhysicalDevice device);
     bool isDeviceSuitable(VkPhysicalDevice device);
     QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device);
+    uint32_t findMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties);
 
 	// swap chain helper functions
     SwapChainSupportDetails querySwapChainSupport(VkPhysicalDevice device);
     static VkSurfaceFormatKHR chooseSwapSurfaceFormat(const std::vector<VkSurfaceFormatKHR>& availableFormats);
     static VkPresentModeKHR chooseSwapPresentMode(const std::vector<VkPresentModeKHR>& availablePresentModes);
-    static VkExtent2D chooseSwapExtent(const VkSurfaceCapabilitiesKHR& capabilities);
+    VkExtent2D chooseSwapExtent(const VkSurfaceCapabilitiesKHR& capabilities);
 	
 	// graphics pipeline helper functions
     VkShaderModule createShaderModule(const std::vector<char>& code);
