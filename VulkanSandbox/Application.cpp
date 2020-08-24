@@ -63,6 +63,13 @@ const std::vector<uint16_t> indices = {
     0, 1, 2, 2, 3, 0
 };
 
+struct UniformBufferObject 
+{
+    glm::mat4 model;
+    glm::mat4 view;
+    glm::mat4 proj;
+}
+
 void Application::run()
 {
     initWindow();
@@ -154,7 +161,8 @@ void Application::createInstance()
     else
     {
         createInfo.enabledLayerCount = 0;
-    }
+    }
+
     // create the Vulkan instance
     VkResult result = vkCreateInstance(&createInfo, nullptr, &m_instance);
 
