@@ -63,12 +63,12 @@ const std::vector<uint16_t> indices = {
     0, 1, 2, 2, 3, 0
 };
 
-struct UniformBufferObject 
+struct UniformBufferObject
 {
     glm::mat4 model;
     glm::mat4 view;
     glm::mat4 proj;
-}
+};
 
 void Application::run()
 {

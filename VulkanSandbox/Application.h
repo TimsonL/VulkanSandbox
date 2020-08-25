@@ -38,9 +38,7 @@ private:
 
     VkRenderPass m_renderPass;
     VkPipelineLayout m_pipelineLayout;
-    
     VkDescriptorSetLayout m_descriptorSetLayout;
-    VkPipelineLayout m_pipelineLayout;
 
     VkPipeline m_graphicsPipeline;
 
