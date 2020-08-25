@@ -39,6 +39,8 @@ private:
     VkRenderPass m_renderPass;
     VkPipelineLayout m_pipelineLayout;
     VkDescriptorSetLayout m_descriptorSetLayout;
+    VkDescriptorPool m_descriptorPool;
+    std::vector<VkDescriptorSet> m_descriptorSets;
 
     VkPipeline m_graphicsPipeline;
 
@@ -107,6 +109,9 @@ private:
     void createRenderPass();
 
     void createDescriptorSetLayout();
+    void createDescriptorPool();
+    void createDescriptorSets();
+    
     void createGraphicsPipeline();
 
     void createFramebuffers();
