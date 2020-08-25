@@ -48,7 +48,7 @@ private:
     VkDeviceMemory m_vertexBufferMemory;
     VkBuffer m_indexBuffer;
     VkDeviceMemory m_indexBufferMemory;
-    std::vector<VkBuffer> m_unfiormBuffers;
+    std::vector<VkBuffer> m_uniformBuffers;
     std::vector<VkDeviceMemory> m_uniformBuffersMemory;
 	
     VkCommandPool m_commandPool;

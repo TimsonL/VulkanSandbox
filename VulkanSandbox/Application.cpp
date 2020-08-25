@@ -1190,7 +1190,7 @@ void Application::drawFrame()
     }
     m_imagesInFlight[imageIndex] = m_inFlightFences[m_currentFrame];
 	
-    updateUniformBuffers(imageIndex);
+    updateUniformBuffer(imageIndex);
     
     VkSubmitInfo submitInfo = {};
     submitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
