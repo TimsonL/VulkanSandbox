@@ -48,6 +48,8 @@ private:
     VkDeviceMemory m_vertexBufferMemory;
     VkBuffer m_indexBuffer;
     VkDeviceMemory m_indexBufferMemory;
+    std::vector<VkBuffer> m_unfiormBuffers;
+    std::vector<VkDeviceMemory> m_uniformBuffersMemory;
 	
     VkCommandPool m_commandPool;
     std::vector<VkCommandBuffer> m_commandBuffers;
@@ -113,11 +115,13 @@ private:
     void copyBuffer(VkBuffer srcBuffer, VkBuffer dstBuffer, VkDeviceSize size);
     void createVertexBuffer();
     void createIndexBuffer();
+    void createUniformBuffers();
 	
     void createCommandPool();
     void createCommandBuffers();
 
     void drawFrame();
+    void updateUniformBuffer(uint32_t currentImage);
 
     void createSyncObjects();
 	
