@@ -784,6 +784,7 @@ void Application::createDescriptorSets()
     std::vector<VkDescriptorSetLayout> layouts(m_swapChainImages.size(), m_descriptorSetLayout);
     VkDescriptorSetAllocateInfo allocInfo = {};
     allocInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO;
+    allocInfo.descriptorPool = m_descriptorPool;
     allocInfo.descriptorSetCount = static_cast<uint32_t>(m_swapChainImages.size());
     allocInfo.pSetLayouts = layouts.data();
     
@@ -802,7 +803,7 @@ void Application::createDescriptorSets()
         
         VkWriteDescriptorSet descriptorWrite = {};
         descriptorWrite.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
-        descriptorWrite.dstSet = descriptorSets[i];
+        descriptorWrite.dstSet = m_descriptorSets[i];
         descriptorWrite.dstBinding = 0;
         descriptorWrite.dstArrayElement = 0;
         descriptorWrite.descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
