@@ -818,8 +818,8 @@ void Application::createDescriptorSets()
 
 void Application::createGraphicsPipeline()
 {
-    auto vertShaderCode = readFile("../shaders/vert.spv");
-    auto fragShaderCode = readFile("../shaders/frag.spv");
+    auto vertShaderCode = readFile("../../shaders/vert.spv");
+    auto fragShaderCode = readFile("../../shaders/frag.spv");
 
     //std::cout << vertShaderCode.size() << std::endl;
     //std::cout << fragShaderCode.size() << std::endl;
