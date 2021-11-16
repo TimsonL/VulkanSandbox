@@ -10,8 +10,9 @@ set(SOURCES
 set(HEADERS
     Application.h
 )
+
 set(VULKAN_SDK_PATH
-    C:/VulkanSDK/1.2.176.1
+    $ENV{VULKAN_SDK}
 )
 
 # add the executable
