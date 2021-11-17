@@ -52,6 +52,9 @@ private:
     std::vector<VkBuffer> m_uniformBuffers;
     std::vector<VkDeviceMemory> m_uniformBuffersMemory;
 	
+    VkImage m_textureImage;
+    VkDeviceMemory m_textureImageMemory;
+
     VkCommandPool m_commandPool;
     std::vector<VkCommandBuffer> m_commandBuffers;
 
@@ -133,6 +136,7 @@ private:
         VkDeviceMemory& imageMemory);
     void createTextureImage();
     void transitionImageLayout(VkImage image, VkFormat format, VkImageLayout oldLayout, VkImageLayout newLayout);
+    void copyBufferToImage(VkBuffer buffer, VkImage image, uint32_t width, uint32_t height);
 
     void drawFrame();
     void updateUniformBuffer(uint32_t currentImage);
